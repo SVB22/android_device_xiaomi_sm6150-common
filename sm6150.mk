@@ -256,6 +256,7 @@ PRODUCT_COPY_FILES += \
 
 # QTI Vendor Components
 TARGET_COMMON_QTI_COMPONENTS := \
+    av \
     bt \
     perf \
     overlay
