@@ -258,6 +258,7 @@ PRODUCT_COPY_FILES += \
 TARGET_COMMON_QTI_COMPONENTS := \
     av \
     bt \
+    telephony \
     perf \
     overlay \
     wfd
