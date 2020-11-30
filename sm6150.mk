@@ -160,8 +160,14 @@ PRODUCT_PACKAGES += \
     qcom.fmradio
 
 # Fstab
+ifeq ($(PRODUCT_USE_DYNAMIC_PARTITIONS), true)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/fstab_dynamic.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/etc/fstab_dynamic.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom
+else    
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom
+endif
 
 # GPS
 PRODUCT_PACKAGES += \

@@ -141,7 +141,11 @@ BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
+ifeq ($(PRODUCT_USE_DYNAMIC_PARTITIONS), true)
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab_dynamic.qcom
+else
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
+endif
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 
 # RIL
