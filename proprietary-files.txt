@@ -74,6 +74,11 @@ system_ext/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
 # Charger
 vendor/bin/hvdcp_opti
 
+# Charger - from LA.UM.9.1.r1-07300-SMxxx0.0
+vendor/bin/init.qti.chg_policy.sh
+vendor/etc/charger_fstab.qti
+vendor/etc/init/vendor.qti.hardware.charger_monitor@1.0-service.rc
+
 # CNE
 -vendor/app/CneApp/CneApp.apk
 -vendor/app/IWlanService/IWlanService.apk
