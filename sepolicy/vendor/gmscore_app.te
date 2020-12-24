@@ -1,0 +1,2 @@
+allow gmscore_app vendor_hal_perf_hwservice:hwservice_manager find;
+
