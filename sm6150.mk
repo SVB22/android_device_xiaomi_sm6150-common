@@ -135,6 +135,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.2-service.xiaomi_sm6150
 
+# FM
+BOARD_HAVE_QCOM_FM := true
+
 # Fstab
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom
