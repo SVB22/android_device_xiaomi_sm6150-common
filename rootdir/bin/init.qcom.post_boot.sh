@@ -81,6 +81,37 @@ function configure_memory_parameters() {
 case "$target" in
     "sm6150")
 
+    # Apply settings for sm6150
+    # Set the default IRQ affinity to the silver cluster. When a
+    # CPU is isolated/hotplugged, the IRQ affinity is adjusted
+    # to one of the CPU from the default IRQ affinity mask.
+    echo 3f > /proc/irq/default_smp_affinity
+
+    # Setting b.L scheduler parameters
+    # default sched up and down migrate values are 71 and 65
+    echo 65 > /proc/sys/kernel/sched_downmigrate
+    echo 71 > /proc/sys/kernel/sched_upmigrate
+
+    # configure governor settings for little cluster
+    echo "schedutil" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us
+    echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us
+
+    # configure scaling min frequency for little cluster
+    echo 300000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
+    # configure governor settings for big cluster
+    echo "schedutil" > /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor
+    echo 0 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/up_rate_limit_us
+    echo 0 > /sys/devices/system/cpu/cpu6/cpufreq/schedutil/down_rate_limit_us
+
+    # configure scaling min frequency for big cluster
+    echo 300000 > /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq
+
+    # sched_load_boost as -6 is equivalent to target load as 85. It is per cpu tunable.
+    echo -6 >  /sys/devices/system/cpu/cpu6/sched_load_boost
+    echo -6 >  /sys/devices/system/cpu/cpu7/sched_load_boost
+
     # Enable bus-dcvs
     for device in /sys/devices/platform/soc
     do
