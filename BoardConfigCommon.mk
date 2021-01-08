@@ -106,6 +106,7 @@ BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0xa880
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_VERSION := 4.14
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # Media
 TARGET_USES_ION := true
