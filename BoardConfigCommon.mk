@@ -95,6 +95,10 @@ DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/hidl/c2_manifest.xml
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/configs/hidl/compatibility_matrix.xml
 
 # Kernel
+TARGET_KERNEL_ADDITIONAL_FLAGS := \
+    DTC_EXT=$(shell pwd)/prebuilts/misc/$(HOST_OS)-x86/dtc/dtc
+BOARD_KERNEL_SEPARATED_DTBO := true
+
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
@@ -102,7 +106,7 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sm6150
 
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0xa88000 androidboot.hardware=qcom androidboot.console=ttyMSM0 service_locator.enable=1 loop.max_part=7 swiotlb=1
-
+BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_VERSION := 4.14
