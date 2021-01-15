@@ -264,6 +264,10 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
+# Powerstats
+PRODUCT_PACKAGES += \
+    android.hardware.power.stats@1.0-service.xiaomi_davinci
+
 # QMI
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect.vendor
@@ -309,7 +313,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/xiaomi \
-	hardware/google/pixel
+	hardware/google/pixel \
+	hardware/google/interfaces
 
 # Telephony
 PRODUCT_PACKAGES += \

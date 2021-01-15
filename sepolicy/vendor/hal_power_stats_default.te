@@ -1,0 +1,4 @@
+allow hal_power_stats_default vndbinder_device:chr_file rw_file_perms;
+allow hal_power_stats_default vndservicemanager:binder { transfer call };
+allow hal_power_stats_default default_android_vndservice:service_manager { add find };
+get_prop(hal_power_stats_default, exported_wifi_prop)
